@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "389541925721",
+    "firebase_url": "https://listha-app.firebaseio.com",
+    "project_id": "listha-app",
+    "storage_bucket": "listha-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389541925721:android:88b8495c838fc234767248",
+        "android_client_info": {
+          "package_name": "com.pius.listha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "389541925721-oagb6827898p9rphhnj7r1d3o8i948ch.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pius.listha",
+            "certificate_hash": "391cdeb0a955c9eafa9b1b61777f668f50ef6f69"
+          }
+        },
+        {
+          "client_id": "389541925721-sjbisqml4cgt6qg7g4iou798rpq26u74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeR7t4QOTTXUsXtB-0TK_Mvo2XfTfid0I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "389541925721-sjbisqml4cgt6qg7g4iou798rpq26u74.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "389541925721-078vcpegl5sssmba4ui5rgjpd8k10pts.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pius.listha"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
