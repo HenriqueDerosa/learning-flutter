@@ -16,14 +16,14 @@ class MyApp extends StatelessWidget {
       title: 'Yow',
       theme: ThemeData(
         brightness: Brightness.dark,
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.deepOrange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        accentColor: Colors.deepOrange,
+        accentColor: Colors.yellow,
       ),
       home: Center(
         child: BlocProvider(
           blocs: [Bloc((i) => NavigationBloc())],
-          child: MyHomePage(title: 'First App'),
+          child: MyHomePage(title: 'Back to the Flutter'),
         ),
       ),
       routes: Routes.builder,

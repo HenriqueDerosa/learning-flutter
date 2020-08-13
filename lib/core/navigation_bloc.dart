@@ -15,67 +15,39 @@ class NavigationState {
 }
 
 class NavigationBloc extends BlocBase {
-  final BehaviorSubject<NavigationState> _controller =
-      BehaviorSubject<NavigationState>.seeded(new NavigationState(
-    search: false,
-    searchQuery: '',
-    tab: 0,
-  ));
+  final BehaviorSubject<bool> _search = BehaviorSubject<bool>.seeded(false);
+  final BehaviorSubject<String> _searchQuery =
+      BehaviorSubject<String>.seeded('');
+  final BehaviorSubject<int> _tab = BehaviorSubject<int>.seeded(0);
 
-  Stream<NavigationState> get stream => _controller.stream;
-  NavigationState get state => _controller.value;
+  Stream<NavigationState> controller() => CombineLatestStream.combine3(
+      _search,
+      _searchQuery,
+      _tab,
+      (bool search, String searchQuery, int tab) =>
+          NavigationState(search: search, searchQuery: searchQuery, tab: tab));
 
   void switchTab(int index) {
-    if (state == null) {
-      _controller.sink.add(new NavigationState(
-        search: false,
-        searchQuery: '',
-        tab: index,
-      ));
-      return;
-    }
-    _controller.sink.add(new NavigationState(
-      search: state.search,
-      searchQuery: state.searchQuery,
-      tab: index,
-    ));
+    _tab.sink.add(index);
+    enableSearch(false);
   }
 
   void enableSearch(bool value) {
-    if (state == null) {
-      _controller.sink.add(new NavigationState(
-        search: value,
-        searchQuery: '',
-        tab: 0,
-      ));
-      return;
-    }
-    _controller.sink.add(new NavigationState(
-      search: !state.search,
-      searchQuery: state.searchQuery,
-      tab: state.tab,
-    ));
+    _search.sink.add(value);
   }
 
   void setSearchQuery(String value) {
-    if (state == null) {
-      _controller.sink.add(new NavigationState(
-        search: false,
-        searchQuery: value,
-        tab: 0,
-      ));
-      return;
-    }
-    _controller.sink.add(new NavigationState(
-      search: state.search,
-      searchQuery: value,
-      tab: state.tab,
-    ));
+    _searchQuery.sink.add(value);
   }
 
   @override
   void dispose() {
     super.dispose();
-    _controller.close();
+    _search.drain();
+    _search.close();
+    _searchQuery.drain();
+    _searchQuery.close();
+    _tab.drain();
+    _tab.close();
   }
 }
